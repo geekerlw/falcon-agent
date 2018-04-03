@@ -37,10 +37,10 @@ func reportAgentStatus(interval time.Duration) {
 		}
 
 		req := model.AgentReportRequest{
-			Hostname:      hostname,
-			IP:            g.IP(),
-			AgentVersion:  g.VERSION,
-			PluginVersion: g.GetCurrPluginVersion(),
+			Hostname:     hostname,
+			IP:           g.IP(),
+			AgentVersion: g.VERSION,
+			//PluginVersion: g.GetCurrPluginVersion(),
 		}
 
 		var resp model.SimpleRpcResponse

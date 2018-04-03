@@ -24,8 +24,8 @@ import (
 
 func InitDataHistory() {
 	for {
-		funcs.UpdateCpuStat()
-		funcs.UpdateDiskStats()
+		//funcs.UpdateCpuStat()
+		//funcs.UpdateDiskStats()
 		time.Sleep(g.COLLECT_INTERVAL)
 	}
 }

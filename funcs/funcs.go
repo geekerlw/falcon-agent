@@ -32,41 +32,6 @@ func BuildMappers() {
 		{
 			Fs: []func() []*model.MetricValue{
 				AgentMetrics,
-				CpuMetrics,
-				NetMetrics,
-				KernelMetrics,
-				LoadAvgMetrics,
-				MemMetrics,
-				DiskIOMetrics,
-				IOStatsMetrics,
-				NetstatMetrics,
-				ProcMetrics,
-				UdpMetrics,
-			},
-			Interval: interval,
-		},
-		{
-			Fs: []func() []*model.MetricValue{
-				DeviceMetrics,
-			},
-			Interval: interval,
-		},
-		{
-			Fs: []func() []*model.MetricValue{
-				PortMetrics,
-				SocketStatSummaryMetrics,
-			},
-			Interval: interval,
-		},
-		{
-			Fs: []func() []*model.MetricValue{
-				DuMetrics,
-			},
-			Interval: interval,
-		},
-		{
-			Fs: []func() []*model.MetricValue{
-				UrlMetrics,
 			},
 			Interval: interval,
 		},
