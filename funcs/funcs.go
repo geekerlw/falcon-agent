@@ -32,6 +32,7 @@ func BuildMappers() {
 		{
 			Fs: []func() []*model.MetricValue{
 				AgentMetrics,
+				CpuMetrics,
 			},
 			Interval: interval,
 		},

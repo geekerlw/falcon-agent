@@ -26,6 +26,7 @@ func InitDataHistory() {
 	for {
 		//funcs.UpdateCpuStat()
 		//funcs.UpdateDiskStats()
+		funcs.CpuStateUpdate()
 		time.Sleep(g.COLLECT_INTERVAL)
 	}
 }
