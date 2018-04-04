@@ -34,6 +34,7 @@ func BuildMappers() {
 				AgentMetrics,
 				CpuMetrics,
 				MemMetrics,
+				DiskMetrics,
 			},
 			Interval: interval,
 		},

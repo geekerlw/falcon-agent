@@ -44,7 +44,7 @@ func memStateUpdate() (*mem.SwapMemoryStat, *mem.VirtualMemoryStat, error) {
 func MemMetrics() []*model.MetricValue {
 	swap, virtual, err := memStateUpdate()
 	if err != nil {
-		log.Printf("failed to get memory info\n")
+		log.Printf("failed to get memory info: %v\n", err)
 		return []*model.MetricValue{}
 	}
 
