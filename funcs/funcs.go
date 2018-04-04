@@ -33,6 +33,7 @@ func BuildMappers() {
 			Fs: []func() []*model.MetricValue{
 				AgentMetrics,
 				CpuMetrics,
+				MemMetrics,
 			},
 			Interval: interval,
 		},
