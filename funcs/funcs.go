@@ -35,7 +35,13 @@ func BuildMappers() {
 				CpuMetrics,
 				MemMetrics,
 				DiskMetrics,
+			},
+			Interval: interval,
+		},
+		{
+			Fs: []func() []*model.MetricValue{
 				ProcMetrics,
+				SnmpMetrics,
 			},
 			Interval: interval,
 		},
