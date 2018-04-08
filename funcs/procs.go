@@ -59,13 +59,24 @@ func ProcMetrics() (L []*model.MetricValue) {
 
 	for tags, m := range reportProcs {
 		cnt := 0
+		var cpuTotal float64
+		cpuTotal = 0.0
+		var memTotal float32
+		memTotal = 0.0
+
 		for i := 0; i < pslen; i++ {
 			if isProc(ps[i], m) {
 				cnt++
+				cpu, _ := ps[i].CPUPercent()
+				mem, _ := ps[i].MemoryPercent()
+				cpuTotal += cpu
+				memTotal += mem
 			}
 		}
 
 		L = append(L, GaugeValue(g.PROC_NUM, cnt, tags))
+		L = append(L, GaugeValue("proc.cpu.percent", cpuTotal, tags))
+		L = append(L, GaugeValue("proc.mem.percent", memTotal, tags))
 	}
 	return
 }
