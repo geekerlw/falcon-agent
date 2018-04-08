@@ -127,7 +127,7 @@ func CpuMetrics() []*model.MetricValue {
 		GaugeValue("cpu.softirq", cpuSoftirq()),
 		GaugeValue("cpu.steal", cpuSteal()),
 		GaugeValue("cpu.guest", cpuGuest()),
-		GaugeValue("cpu.gusenice", cpuGuestNice()),
+		GaugeValue("cpu.guestnice", cpuGuestNice()),
 		GaugeValue("cpu.stolen", cpuStolen()),
 		GaugeValue("cpu.used.percent", cpuPercent),
 	}

@@ -49,7 +49,7 @@ func MemMetrics() []*model.MetricValue {
 	}
 
 	return []*model.MetricValue{
-		GaugeValue("mem.swap.tatal", swap.Total),
+		GaugeValue("mem.swap.total", swap.Total),
 		GaugeValue("mem.swap.used", swap.Used),
 		GaugeValue("mem.swap.free", swap.Free),
 		GaugeValue("mem.swap.used.percent", swap.UsedPercent),
