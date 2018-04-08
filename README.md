@@ -44,7 +44,7 @@ go build -o falcon-agent 		# for linux
 |   cpu.softirq    | GAUGE |  /   |  cpu softirq time  |
 |    cpu.steal     | GAUGE |  /   |   cpu steal time   |
 |  cpu.guestnice   | GAUGE |  /   | cpu gusesnice time |
-|    cpu.stolen    | GAUGE |  /   |                    |
+|    cpu.stolen    | GAUGE |  /   |  cpu stolen time   |
 | cpu.used.percent | GAUGE |  /   |  cpu used percent  |
 
 ## memory
@@ -80,9 +80,9 @@ go build -o falcon-agent 		# for linux
 
 ### Snmp
 
-| Counters | Type  |         Tag          |     Notes     |
-| :------: | :---: | :------------------: | :-----------: |
-| snmp.get | GAUGE | addr=address,oid=oid | get oid value |
+| Counters | Type  |         Tag          |           Notes            |
+| :------: | :---: | :------------------: | :------------------------: |
+| snmp.get | GAUGE | addr=address,oid=oid | get oid value from address |
 
 
 ## Configuration
@@ -128,28 +128,12 @@ Refer to `cfg.example.json`, modify the file name to `cfg.json` :
     "collector": {
         "ifacePrefix": ["eth", "em"],
         "mountPoint": [],
-        "snmpAddr": `string`,	// snmp target address
-        "snmpOids": ["", ""]	// snmp target oids
+        "snmpAddr": `192.168.1.1`,	// snmp target address
+        "snmpOids": ["1.3.6.1.2.1.2.1.0", "1.3.6.1.2.1.1.3.0"]	// snmp target oids
     },
     "default_tags": {
     },
     "ignore": {
-        "cpu.busy": true,
-        "df.bytes.free": true,
-        "df.bytes.total": true,
-        "df.bytes.used": true,
-        "df.bytes.used.percent": true,
-        "df.inodes.total": true,
-        "df.inodes.free": true,
-        "df.inodes.used": true,
-        "df.inodes.used.percent": true,
-        "mem.memtotal": true,
-        "mem.memused": true,
-        "mem.memused.percent": true,
-        "mem.memfree": true,
-        "mem.swaptotal": true,
-        "mem.swapused": true,
-        "mem.swapfree": true
     }
 }
 
