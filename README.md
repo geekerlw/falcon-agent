@@ -8,6 +8,7 @@ This is an agent port of open-falcon, just like the origin agent module, but can
 * process cpu, mem, nums collection
 * http api to push
 * single execute file, can working with windows service or linux systemd
+* plugin execute support, but not support git or http sync 
 
 ## Installation
 
