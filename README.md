@@ -71,6 +71,21 @@ go build -o falcon-agent 		# for linux
 |     disk.used     | GAUGE | diskpath=%s |     used     |
 | disk.used.percent | GAUGE | diskpath=%s | used percent |
 
+### Network
+
+|      Counters       |  Type   | Tag  |         Notes          |
+| :-----------------: | :-----: | :--: | :--------------------: |
+|  net.if.bytes.send  | COUNTER |  /   | sum of all information |
+|  net.if.bytes.recv  | COUNTER |  /   | sum of all information |
+| net.if.packets.send | COUNTER |  /   | sum of all information |
+| net.if.packets.recv | COUNTER |  /   | sum of all information |
+|    net.if.err.in    | COUNTER |  /   | sum of all information |
+|   net.if.err.out    | COUNTER |  /   | sum of all information |
+|   net.if.drop.in    | COUNTER |  /   | sum of all information |
+|   net.if.drop.out   | COUNTER |  /   | sum of all information |
+|   net.if.fifo.in    | COUNTER |  /   | sum of all information |
+|   net.if.fifo.out   | COUNTER |  /   | sum of all information |
+
 ### Process
 
 |     Counters     | Type  |            Tag            |       Notes        |
