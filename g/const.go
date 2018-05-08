@@ -32,4 +32,5 @@ const (
 	NET_PORT_LISTEN  = "net.port.listen"
 	DU_BS            = "du.bs"
 	PROC_NUM         = "proc.num"
+	SNMP_GET         = "snmp.get"
 )

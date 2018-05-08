@@ -16,14 +16,15 @@ package g
 
 import (
 	"bytes"
-	"github.com/open-falcon/falcon-plus/common/model"
-	"github.com/toolkits/slice"
 	"log"
 	"net"
 	"os"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/open-falcon/falcon-plus/common/model"
+	"github.com/toolkits/slice"
 )
 
 var Root string
@@ -179,6 +180,25 @@ func SetReportProcs(procs map[string]map[int]string) {
 	reportProcsLock.Lock()
 	defer reportProcsLock.Unlock()
 	reportProcs = procs
+}
+
+var (
+	// tags => {0=>addr, 1=>oid}
+	//e.g. `addr=192.168.1.1,oid=1.3.6.1.3.1.5.2.4.0`
+	reportOids     map[string]map[int]string
+	reportOidsLock = new(sync.RWMutex)
+)
+
+func ReportOids() map[string]map[int]string {
+	reportOidsLock.RLock()
+	defer reportOidsLock.RUnlock()
+	return reportOids
+}
+
+func SetReportOids(oids map[string]map[int]string) {
+	reportOidsLock.Lock()
+	defer reportOidsLock.Unlock()
+	reportOids = oids
 }
 
 var (

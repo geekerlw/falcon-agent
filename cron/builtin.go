@@ -44,6 +44,7 @@ func syncBuiltinMetrics() {
 		var paths = []string{}
 		var procs = make(map[string]map[int]string)
 		var urls = make(map[string]string)
+		var oids = make(map[string]map[int]string)
 
 		hostname, err := g.Hostname()
 		if err != nil {
@@ -135,11 +136,28 @@ func syncBuiltinMetrics() {
 
 				procs[metric.Tags] = tmpMap
 			}
+
+			if metric.Metric == g.SNMP_GET {
+				arr := strings.Split(metric.Tags, ",")
+
+				tmpMap := make(map[int]string)
+
+				for i := 0; i < len(arr); i++ {
+					if strings.HasPrefix(arr[i], "addr=") {
+						tmpMap[0] = strings.TrimSpace(arr[i][5:])
+					} else if strings.HasPrefix(arr[i], "oid=") {
+						tmpMap[1] = strings.TrimSpace(arr[i][4:])
+					}
+				}
+
+				oids[metric.Tags] = tmpMap
+			}
 		}
 
 		g.SetReportUrls(urls)
 		g.SetReportPorts(ports)
 		g.SetReportProcs(procs)
+		g.SetReportOids(oids)
 		g.SetDuPaths(paths)
 
 	}

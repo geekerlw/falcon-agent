@@ -15,7 +15,6 @@
 package funcs
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/geekerlw/falcon-agent/g"
@@ -52,22 +51,33 @@ func snmpGet(addr string, oids []string) (map[string]interface{}, error) {
 }
 
 func SnmpMetrics() (L []*model.MetricValue) {
-	addr := g.Config().Collector.SnmpAddr
-	oids := g.Config().Collector.SnmpOids
-
-	if len(oids) == 0 {
+	reportOids := g.ReportOids()
+	sz := len(reportOids)
+	if sz == 0 {
 		return
 	}
 
-	res, err := snmpGet(addr, oids)
-	if err != nil {
-		log.Printf("failed to get oids: %v\n", err)
-		return
-	}
+	for tags, m := range reportOids {
+		var addr string
+		var oids []string
 
-	for o, v := range res {
-		tag := fmt.Sprintf("addr=%s,oid=%s", addr, o)
-		L = append(L, GaugeValue("snmp.get", v, tag))
+		for key, val := range m {
+			if key == 0 {
+				addr = val
+			} else if key == 1 {
+				oids = append(oids, val)
+			}
+		}
+
+		res, err := snmpGet(addr, oids)
+		if err != nil {
+			log.Printf("failed to get oid, err: %v\n", err)
+			continue
+		}
+
+		for _, v := range res {
+			L = append(L, GaugeValue("snmp.get", v, tags))
+		}
 	}
 
 	return

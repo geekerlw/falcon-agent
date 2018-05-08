@@ -53,8 +53,6 @@ type HttpConfig struct {
 type CollectorConfig struct {
 	IfacePrefix []string `json:"ifacePrefix"`
 	MountPoint  []string `json:"mountPoint"`
-	SnmpAddr    string   `json:"snmpAddr"`
-	SnmpOids    []string `json:"snmpOids"`
 }
 
 type GlobalConfig struct {
