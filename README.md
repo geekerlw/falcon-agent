@@ -6,6 +6,7 @@ This is an agent port of open-falcon, just like the origin agent module, but can
 
 * besic data collection(cpu, mem, disk and etc.)
 * process cpu, mem, nums collection
+* snmp device custom collection
 * http api to push
 * single execute file, can working with windows service or linux systemd
 * plugin execute support, but not support git or http sync 
@@ -19,7 +20,7 @@ it is a golang classic project
 go get github.com/geekerlw/falcon-agent
 cd $GOPATH/src/github.com/geekerlw/falcon-agent
 go build -o falcon-agent.exe 	# for windows
-go build -o falcon-agent 		# for linux
+go build -o falcon-agent 	# for linux
 ```
 
 
@@ -142,10 +143,8 @@ Refer to `cfg.example.json`, modify the file name to `cfg.json` :
         "backdoor": false
     },
     "collector": {
-        "ifacePrefix": ["eth", "em"],
-        "mountPoint": [],
-        "snmpAddr": `192.168.1.1`,	// snmp target address
-        "snmpOids": ["1.3.6.1.2.1.2.1.0", "1.3.6.1.2.1.1.3.0"]	// snmp target oids
+        "ifacePrefix": [], // deprecated
+        "mountPoint": [], // deprecated
     },
     "default_tags": {
     },
