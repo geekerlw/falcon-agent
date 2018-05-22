@@ -16,6 +16,7 @@ package funcs
 
 import (
 	"sync"
+	"time"
 
 	"github.com/open-falcon/falcon-plus/common/model"
 	"github.com/shirou/gopsutil/cpu"
@@ -33,7 +34,7 @@ func CpuStateUpdate() error {
 		return errc
 	}
 
-	p, errp := cpu.Percent(0, false)
+	p, errp := cpu.Percent(time.Second, false)
 	if errp != nil {
 		return errp
 	}
